@@ -1,0 +1,142 @@
+<h2>Purchase Order</h2>
+
+<form [formGroup]="form" (submit)="processForm()">
+
+    <ul>
+        <li>Form valid: {{ form.valid }}</li>
+        <li>Form invalid: {{ form.invalid }}</li>
+    </ul>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text"
+                    formControlName="name"
+                    [ngClass]="{
+                        'valid': isCtrlValid('name'),
+                        'invalid': isCtrlInvalid('name')
+                    }"
+                    >
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>
+                <input type="text"
+                    formControlName="address"
+                    [ngClass]="{
+                        'valid': isCtrlValid('address'),
+                        'invalid': isCtrlInvalid('address')
+                    }"
+                    >
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email"
+                    formControlName="email"
+                    [ngClass]="{
+                        'valid': isCtrlValid('email'),
+                        'invalid': isCtrlInvalid('email')
+                    }"
+                    >
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery Date</td>
+            <td>
+                <input type="date"
+                    formControlName="deliveryDate"
+                    [ngClass]="{
+                        'valid': isCtrlValid('deliveryDate'),
+                        'invalid': isCtrlInvalid('deliveryDate')
+                    }"
+                    >
+            </td>
+        </tr>
+        <tr>
+            <td>Availability</td>
+            <td>
+                <select formControlName="availability">
+                    <option value="0">0900 - 1200</option>
+                    <option value="1">1200 - 1600</option>
+                    <option value="2">1600 - 2000</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Urgent</td>
+            <td>
+                <input type="checkbox"
+                    formControlName="urgent">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit"
+                    [disabled]="invalid()">
+                    Submit Order
+                </button>
+                <button
+                    (click)="addLineItem()">
+                    Add Line Item
+                </button>
+            </td>
+        </tr>
+    </table>
+
+
+    @if (lineItems.controls.length > 0) {
+
+        <h3>Line Items</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                </tr>
+            </thead>
+            <tbody formArrayName="lineItems">
+    
+                @for (li of lineItems.controls; let idx = $index; track li) {
+                    <tr [formGroupName]="idx">
+                        <td>
+                            <input type="text"
+                                formControlName="itemName"
+                                [ngClass]="{
+                                    'valid': isLineItemValid(idx, 'itemName'),
+                                    'invalid': isLineItemInvalid(idx, 'itemName')
+                                }"
+                                >
+                        </td>
+                        <td>
+                            <input type="number"
+                                formControlName="quantity"
+                                min="0">
+                        </td>
+                        <td>
+                            <input type="number"
+                                formControlName="unitPrice"
+                                min="0"
+                                step="0.01">
+                        </td>
+                        <td>
+                            <button (click)="removeLineItem(idx)">X</button>
+                        </td>
+                    </tr>
+                }
+    
+            </tbody>
+        </table>
+
+    } @else {
+        <h3>No Line Items Added</h3>
+    }
+
+
+</form>
