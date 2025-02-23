@@ -1,5 +1,5 @@
 .valid {
-    border: 2px solid lightgreen
+    border: 2px solid rgb(165, 250, 165)
 }
 
 .invalid {
@@ -11,69 +11,24 @@
     padding: 20px
 }
 
-
-/* Basic styling for the form */
-.form-row {
-    margin-bottom: 15px;
-}
-
-.form-row label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-row input,
-.form-row select,
-.form-row button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.form-row button {
-    margin-top: 10px;
-}
-
-/* Make the row use Flexbox */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* Ensure the columns stack on small screens */
-.col {
-    flex: 1 1 100%; /* Each column takes full width */
-}
-
-/* For medium screens and up, use flex-basis to make columns equal size */
-@media (min-width: 768px) {
-    .col {
-        flex: 1 1 calc(50% - 20px); /* Two columns layout */
-    }
-}
-
-/* For large screens, use flex-basis to make columns equal size */
-@media (min-width: 1024px) {
-    .col {
-        flex: 1 1 calc(33.33% - 20px); /* Three columns layout */
-    }
-}
-
-/* Center the content in smaller screens */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full viewport height */
+    gap: 20px; /* Space between elements */
 }
 
-/* Styling for buttons */
-button {
-    cursor: pointer;
+.shopping-cart {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
-button:disabled {
-    cursor: not-allowed;
-    background-color: #ccc;
+.forms {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }

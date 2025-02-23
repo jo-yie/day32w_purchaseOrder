@@ -1,5 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Order</title>
+</head>
+<body>
 
-<div class="container">
+    <div class="container">
+
+        <div class="shopping-cart">
+            <img src="/shopping-cart.jpg" width="200px">
+        </div>
+
+        <div class="forms">
 
         <form [formGroup]="form" (submit)="processForm()">
 
@@ -96,12 +110,15 @@
                                 class="btn btn-primary">
                                 Submit Order
                             </button>
-                            <button
-                                (click)="addLineItem()"
-                                class="btn btn-primary">
-                                Add Line Item
-                            </button>
                         </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <button
+                            (click)="addLineItem()"
+                            class="btn btn-primary">
+                            Add Line Item
+                        </button>
                     </tr>
                 </table>
         
@@ -173,7 +190,10 @@
             </div>
         
         </form>
+
+        </div>
+
+    </div>
     
-
-</div>
-
+</body>
+</html>

@@ -52,11 +52,17 @@ export class PurchaseOrderComponent {
   }
 
   protected isCtrlValid(ctrl: string): boolean {
-    return !!this.form.get(ctrl)?.valid
+    const control = this.form.get(ctrl);
+    return !!control && control.valid && (control.touched || control.dirty);
+
+    // return !!this.form.get(ctrl)?.valid
   }
   
   protected isCtrlInvalid(ctrl: string): boolean {
-    return !!this.form.get(ctrl)?.invalid
+    const control = this.form.get(ctrl);
+    return !!control && control.invalid && (control.touched || control.dirty);
+
+    // return !!this.form.get(ctrl)?.invalid
   }
 
   private createLineItem(): FormGroup {
@@ -78,11 +84,17 @@ export class PurchaseOrderComponent {
   }
 
   protected isLineItemValid(index: number, ctrl: string): boolean {
-    return !!this.lineItems.at(index).get(ctrl)?.valid
+    const control = this.lineItems.at(index).get(ctrl);
+    return !!control && control.valid && (control.touched || control.dirty);
+
+    // return !!this.lineItems.at(index).get(ctrl)?.valid
   }
   
   protected isLineItemInvalid(index: number, ctrl: string): boolean {
-    return !!this.lineItems.at(index).get(ctrl)?.invalid
+    const control = this.lineItems.at(index).get(ctrl);
+    return !!control && control.invalid && (control.touched || control.dirty);
+
+    // return !!this.lineItems.at(index).get(ctrl)?.invalid
   }
 
   protected invalid(): boolean {
