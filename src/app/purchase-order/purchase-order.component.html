@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container d-flex flex-column align-items-center justify-content-center vh-100">
 
         <div class="shopping-cart">
             <img src="/shopping-cart.jpg" width="200px">
@@ -19,7 +19,7 @@
 
             <div class="form-group">
 
-            <div class="row">
+            <div class="row w-100">
 
             <!-- <ul>
                 <li>Form valid: {{ form.valid }}</li>
@@ -158,6 +158,10 @@
                                         <input type="number"
                                             formControlName="quantity"
                                             min="0"
+                                            [ngClass]="{
+                                                'valid': isLineItemValid(idx, 'quantity'),
+                                                'invalid': isLineItemInvalid(idx, 'quantity')
+                                            }"
                                             class="form-control">
                                     </td>
                                     <td>
@@ -165,6 +169,10 @@
                                             formControlName="unitPrice"
                                             min="0"
                                             step="0.01"
+                                            [ngClass]="{
+                                                'valid': isLineItemValid(idx, 'unitPrice'),
+                                                'invalid': isLineItemInvalid(idx, 'unitPrice')
+                                            }"
                                             class="form-control">
                                     </td>
                                     <td>
